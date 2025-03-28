@@ -19,7 +19,7 @@ X_train, X_test, y_train, y_test = train_test_split(features, labels, test_size=
 thetaP, theta_0P = PerceptronBase(X_train, y_train, 20)
 
 # Treinamento do modelo SGD com dados de treino
-thetaSGD, theta_0SGD = SGD(X_train, y_train, 200000, 1, 0.05)
+thetaSGD, theta_0SGD = SGD(X_train, y_train, 20000, 1, 0.05)
 
 # Avaliação dos modelos nos dados de treino
 acuraciaP_treino = Acuracia(thetaP, theta_0P, X_train, y_train)
@@ -34,4 +34,7 @@ print(f"Perceptron - Acurácia no treino: {acuraciaP_treino:.4f}")
 print(f"Perceptron - Acurácia no teste: {acuraciaP_teste:.4f}")
 print(f"SGD - Acurácia no treino: {acuraciaSGD_treino:.4f}")
 print(f"SGD - Acurácia no teste: {acuraciaSGD_teste:.4f}")
+
+print(texts[2])
+print(Classificar(thetaP, theta_0P, features[2]))
 
