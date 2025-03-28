@@ -21,7 +21,7 @@ A função gamma nos permite avaliar:
 $$ \gamma(\theta,\theta_0) = \frac{y_i(\vec{\theta} \cdot \vec{x_i} + \theta_0)}{\|\vec{\theta}\|} $$
 
 Interpretação:
-- $$ \(\gamma > 0\)$$: Exemplo corretamente classificado
+- $$\(\gamma > 0\)$$: Exemplo corretamente classificado
 - $$\(\gamma < 0\)$$: Exemplo classificado errado
 - $$\(|\gamma| > \frac{1}{\|\theta\|}\)$$: Exemplo fora da margem
 - $$\(0 < |\gamma| < \frac{1}{\|\theta\|}\)$$: Exemplo dentro da margem
