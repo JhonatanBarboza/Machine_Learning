@@ -4,15 +4,13 @@
 
 Na aula anterior, estudamos o algoritmo Perceptron, que funciona corretamente quando consegue dividir os dados linearmente. Porém, para garantir boa generalização, queremos que nossa **decision boundary** tenha uma margem de segurança simétrica em torno dela.
 
-![Margin Boundary Example](https://i.imgur.com/example.png)
-
 **Dois conceitos importantes:**
 1. **Regularização**: Favorecer margin boundary o mais longe possível da decision boundary
 2. **Loss**: Quantos exemplos ficariam dentro da margem ao afastá-la da decision boundary
 
 A distância (d) entre a decision boundary e a margin boundary é dada por:
 
-\[ d = \frac{1}{\|\theta\|} \]
+$$ d = \frac{1}{\|\theta\|} $$
 
 ## Função Gamma
 
@@ -20,7 +18,7 @@ A função gamma nos permite avaliar:
 - Se um ponto foi classificado corretamente
 - Se está dentro ou fora da margem
 
-\[ \gamma(\theta,\theta_0) = \frac{y_i(\vec{\theta} \cdot \vec{x_i} + \theta_0)}{\|\vec{\theta}\|} \]
+$$ \gamma(\theta,\theta_0) = \frac{y_i(\vec{\theta} \cdot \vec{x_i} + \theta_0)}{\|\vec{\theta}\|} $$
 
 Interpretação:
 - \(\gamma > 0\): Exemplo corretamente classificado
@@ -32,10 +30,10 @@ Interpretação:
 
 Desenvolvemos o Perceptron para centralizar melhor a reta de decisão. A Hinge Loss é definida como:
 
-\[ \text{Loss}_h(z) = \begin{cases} 
+$$ \text{Loss}_h(z) = \begin{cases} 
 0 & \text{se } z \geq 1 \\ 
 1 - z & \text{se } z < 1 
-\end{cases} \]
+\end{cases} $$
 onde \( z = y_i(\vec{\theta} \cdot \vec{x_i} + \theta_0) \)
 
 ## Problema de Otimização
@@ -46,11 +44,11 @@ Minimizar apenas a loss não é suficiente (levaria ao Perceptron simples). Quer
 
 Que equivale a:
 
-\[ \text{min}(Loss) \text{ e } \text{min}(\frac{1}{2}\|\theta\|^2) \]
+$$ \text{min}(Loss) \text{ e } \text{min}(\frac{1}{2}\|\theta\|^2) $$
 
 A função objetivo combinada (com regularização L2):
 
-\[ J(\theta,\theta_0) = \frac{1}{n}\sum_{i=1}^n \text{Loss}_h(y_i(\vec{\theta}\cdot\vec{x_i}+\theta_0)) + \frac{\lambda}{2}\|\theta\|^2 \]
+$$ J(\theta,\theta_0) = \frac{1}{n}\sum_{i=1}^n \text{Loss}_h(y_i(\vec{\theta}\cdot\vec{x_i}+\theta_0)) + \frac{\lambda}{2}\|\theta\|^2 $$
 
 ## O Parâmetro Lambda (λ)
 
@@ -66,15 +64,15 @@ O valor ideal \( C^* = \frac{1}{\lambda^*} \) encontra o equilíbrio entre under
 
 Para minimizar a função objetivo, usamos o gradiente descendente. O gradiente da nossa função é:
 
-\[ \nabla_\theta J = \begin{cases} 
+$$ \nabla_\theta J = \begin{cases} 
 \lambda\theta & \text{se Loss} = 0 \\ 
 -y_i\vec{x_i} + \lambda\theta & \text{se Loss} > 0 
-\end{cases} \]
+\end{cases} $$
 
-\[ \nabla_{\theta_0} J = \begin{cases} 
+$$ \nabla_{\theta_0} J = \begin{cases} 
 0 & \text{se Loss} = 0 \\ 
 -y_i & \text{se Loss} > 0 
-\end{cases} \]
+\end{cases} $$
 
 ### Learning Rate (η)
 
