@@ -21,26 +21,23 @@ A função gamma nos permite avaliar:
 $$ \gamma(\theta,\theta_0) = \frac{y_i(\vec{\theta} \cdot \vec{x_i} + \theta_0)}{\|\vec{\theta}\|} $$
 
 Interpretação:
-- \(\gamma > 0\): Exemplo corretamente classificado
-- \(\gamma < 0\): Exemplo classificado errado
-- \(|\gamma| > \frac{1}{\|\theta\|}\): Exemplo fora da margem
-- \(0 < |\gamma| < \frac{1}{\|\theta\|}\): Exemplo dentro da margem
+- $$ \(\gamma > 0\)$$: Exemplo corretamente classificado
+- $$\(\gamma < 0\)$$: Exemplo classificado errado
+- $$\(|\gamma| > \frac{1}{\|\theta\|}\)$$: Exemplo fora da margem
+- $$\(0 < |\gamma| < \frac{1}{\|\theta\|}\)$$: Exemplo dentro da margem
 
 ## Função Loss (Hinge Loss)
 
 Desenvolvemos o Perceptron para centralizar melhor a reta de decisão. A Hinge Loss é definida como:
 
-$$ \text{Loss}_h(z) = \begin{cases} 
-0 & \text{se } z \geq 1 \\ 
-1 - z & \text{se } z < 1 
-\end{cases} $$
-onde \( z = y_i(\vec{\theta} \cdot \vec{x_i} + \theta_0) \)
+$$ \text{Loss}_h(z) = \begin{cases} 0 & \text{se } z \geq 1 \\ 1 - z & \text{se } z < 1 \end{cases} $$
+onde $$\( z = y_i(\vec{\theta} \cdot \vec{x_i} + \theta_0) \)$$
 
 ## Problema de Otimização
 
 Minimizar apenas a loss não é suficiente (levaria ao Perceptron simples). Queremos:
 1. Minimizar a loss
-2. Maximizar a margem (\(\frac{1}{\|\theta\|}\))
+2. Maximizar a margem ($$\(\frac{1}{\|\theta\|}\)$$)
 
 Que equivale a:
 
@@ -56,23 +53,15 @@ $$ J(\theta,\theta_0) = \frac{1}{n}\sum_{i=1}^n \text{Loss}_h(y_i(\vec{\theta}\c
 - **λ alto**: Margens maiores (melhor generalização)
 - **λ baixo**: Maior complexidade (risco de overfitting)
 
-![Lambda Trade-off](https://i.imgur.com/tradeoff.png)
-
-O valor ideal \( C^* = \frac{1}{\lambda^*} \) encontra o equilíbrio entre underfitting e overfitting.
+O valor ideal $$\( C^* = \frac{1}{\lambda^*} \)$$ encontra o equilíbrio entre underfitting e overfitting.
 
 ## Gradiente Descendente
 
 Para minimizar a função objetivo, usamos o gradiente descendente. O gradiente da nossa função é:
 
-$$ \nabla_\theta J = \begin{cases} 
-\lambda\theta & \text{se Loss} = 0 \\ 
--y_i\vec{x_i} + \lambda\theta & \text{se Loss} > 0 
-\end{cases} $$
+$$ \nabla_\theta J = \begin{cases} \lambda\theta & \text{se Loss} = 0 \\ -y_i\vec{x_i} + \lambda\theta & \text{se Loss} > 0 \end{cases} $$
 
-$$ \nabla_{\theta_0} J = \begin{cases} 
-0 & \text{se Loss} = 0 \\ 
--y_i & \text{se Loss} > 0 
-\end{cases} $$
+$$ \nabla_{\theta_0} J = \begin{cases} 0 & \text{se Loss} = 0 \\ -y_i & \text{se Loss} > 0 \end{cases} $$
 
 ### Learning Rate (η)
 
