@@ -35,6 +35,5 @@ print(f"Perceptron - Acurácia no teste: {acuraciaP_teste:.4f}")
 print(f"SGD - Acurácia no treino: {acuraciaSGD_treino:.4f}")
 print(f"SGD - Acurácia no teste: {acuraciaSGD_teste:.4f}")
 
-print(texts[2])
-print(Classificar(thetaP, theta_0P, features[2]))
+
 
